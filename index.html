@@ -19,12 +19,12 @@
 <style>
 :root{
   --bg:#EEF0F8;--surface:#FFFFFF;--surface2:#F5F6FC;--ink:#1B1F45;--ink2:#5B6088;--line:rgba(27,31,69,.10);
-  --gold:#F1A12E;--goldInk:#8B5200;--goldBg:#FDF1DB;--violet:#6558C9;--violetBg:#ECEAFB;--teal:#1F7C8B;--tealBg:#E0F2F4;--rose:#C85A84;
+  --gold:#1B1F45;--on-gold:#FFFFFF;--goldInk:#2F3380;--goldBg:#E6E9F8;--violet:#6558C9;--violetBg:#EEE8FB;--teal:#1F7C8B;--tealBg:#E0F2F4;--rose:#C85A84;
   --serif:'Fraunces','Tiro Devanagari Hindi',Georgia,serif;--sans:'Mukta','Noto Sans Devanagari',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
   --r-lg:26px;--r:18px;--r-s:12px;--nav:68px;
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1128;--surface:#1A1D3E;--surface2:#222650;--ink:#EDEBFB;--ink2:#A5A9D0;--line:rgba(237,235,251,.13);--gold:#F5B346;--goldInk:#F5C16A;--goldBg:#3A2F1A;--violet:#A89DF5;--violetBg:#2A2866;--teal:#66C6D3;--tealBg:#16363F}}
-:root[data-theme="dark"]{--bg:#0F1128;--surface:#1A1D3E;--surface2:#222650;--ink:#EDEBFB;--ink2:#A5A9D0;--line:rgba(237,235,251,.13);--gold:#F5B346;--goldInk:#F5C16A;--goldBg:#3A2F1A;--violet:#A89DF5;--violetBg:#2A2866;--teal:#66C6D3;--tealBg:#16363F}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1128;--surface:#1A1D3E;--surface2:#222650;--ink:#EDEBFB;--ink2:#A5A9D0;--line:rgba(237,235,251,.13);--gold:#FFFFFF;--on-gold:#1B1F45;--goldInk:#E4E4FF;--goldBg:#2B2F66;--violet:#A89DF5;--violetBg:#2E2A6B;--teal:#66C6D3;--tealBg:#16363F}}
+:root[data-theme="dark"]{--bg:#0F1128;--surface:#1A1D3E;--surface2:#222650;--ink:#EDEBFB;--ink2:#A5A9D0;--line:rgba(237,235,251,.13);--gold:#FFFFFF;--on-gold:#1B1F45;--goldInk:#E4E4FF;--goldBg:#2B2F66;--violet:#A89DF5;--violetBg:#2E2A6B;--teal:#66C6D3;--tealBg:#16363F}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{background:var(--bg)}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 var(--sans);-webkit-font-smoothing:antialiased;padding-bottom:calc(var(--nav) + env(safe-area-inset-bottom) + 18px)}
@@ -54,7 +54,7 @@ button:focus-visible,input:focus-visible,summary:focus-visible,a:focus-visible{o
 .ring{position:relative;width:224px;height:224px;margin:8px auto 4px}
 .ring svg{position:absolute;inset:0;width:100%;height:100%}
 .ring-bg{fill:none;stroke:rgba(255,255,255,.18);stroke-width:10}
-.ring-arc{fill:none;stroke:#FFD487;stroke-width:10;stroke-linecap:round;transition:stroke-dashoffset 1.5s cubic-bezier(.2,.8,.2,1)}
+.ring-arc{fill:none;stroke:#FFFFFF;stroke-width:10;stroke-linecap:round;transition:stroke-dashoffset 1.5s cubic-bezier(.2,.8,.2,1)}
 .ring-moon{position:absolute;inset:48px}.moon{width:100%;height:100%;display:block}
 .level{font-size:38px;line-height:1.1;margin-top:4px}
 .level-s{margin:6px auto 12px;max-width:30ch;opacity:.92}
@@ -86,7 +86,7 @@ button:focus-visible,input:focus-visible,summary:focus-visible,a:focus-visible{o
 .lnum{margin-left:auto;display:flex;gap:6px}.lnum i{font:600 18px var(--serif);font-style:normal;width:36px;height:36px;border-radius:50%;background:var(--violetBg);color:var(--violet);display:grid;place-items:center}
 .chapter{padding:2px 16px 14px}.ch-h{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
 .ch-h b{font:600 19px var(--serif)}.ch-h span{color:var(--ink2);font-size:14px}
-.bar{height:8px;border-radius:99px;background:var(--surface2);overflow:hidden;margin:8px 0 10px}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),#F7C97A);border-radius:99px}
+.bar{height:8px;border-radius:99px;background:var(--surface2);overflow:hidden;margin:8px 0 10px}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--violet),var(--gold));border-radius:99px}
 .link{color:var(--violet);font-weight:600;padding:6px 0;text-decoration:underline;text-underline-offset:3px}
 .birthstar{padding:14px 16px}.birthstar b{font:600 18px var(--serif)}.birthstar p{margin:4px 0 0;color:var(--ink2)}
 .foot-note{color:var(--ink2);font-size:13px;text-align:center;padding:4px 10px 10px}
@@ -96,10 +96,10 @@ button:focus-visible,input:focus-visible,summary:focus-visible,a:focus-visible{o
 .seg{display:flex;background:var(--surface);border:1px solid var(--line);border-radius:99px;padding:4px;gap:2px}
 .seg button{flex:1;padding:8px 10px;border-radius:99px;font-weight:600;font-size:14.5px;color:var(--ink2);min-height:40px}
 .seg button.on{background:var(--ink);color:var(--bg)}
-.seg.gold button.on{background:var(--gold);color:#2A1A00}
+.seg.gold button.on{background:var(--gold);color:var(--on-gold)}
 .seg.wide{margin:14px 0}
 .sys{margin:2px 0 12px}
-.note-box{display:flex;gap:10px;background:var(--goldBg);color:var(--ink);border-radius:var(--r-s);padding:12px 14px;margin-bottom:12px}
+.note-box{display:flex;gap:10px;background:var(--goldBg);color:var(--ink);border:1px solid var(--line);border-radius:var(--r-s);padding:12px 14px;margin-bottom:12px}
 .note-box svg{width:20px;height:20px;flex:none;fill:none;stroke:var(--goldInk);stroke-width:1.8;margin-top:2px}.note-box p{margin:0;font-size:14.5px}
 .note-box.warn{background:var(--violetBg)}.note-box.warn svg{stroke:var(--violet)}
 
@@ -141,13 +141,13 @@ button:focus-visible,input:focus-visible,summary:focus-visible,a:focus-visible{o
 .trio i{display:block;font:600 44px/1 var(--serif);font-style:normal;color:var(--violet)}.trio span{font-size:13.5px;color:var(--ink2)}
 .numcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin-bottom:14px}
 .num-h{display:flex;gap:14px;align-items:center;margin-bottom:8px}
-.num-big{font:600 58px/1 var(--serif);color:var(--gold);min-width:52px;text-align:center}
+.num-big{font:600 58px/1 var(--serif);color:var(--violet);min-width:52px;text-align:center}
 .num-h b{display:block;font-size:16.5px}.num-h small{color:var(--ink2)}
 .kv{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}.kv div{background:var(--surface2);border-radius:var(--r-s);padding:8px 10px}
 .kv dt{font-size:12.5px;color:var(--ink2)}.kv dd{margin:2px 0 0;font-weight:600;font-size:14px}
 .tip{display:flex;gap:8px;background:var(--tealBg);border-radius:var(--r-s);padding:10px 12px;margin:10px 0 0!important}.tip svg{width:20px;height:20px;flex:none;fill:none;stroke:var(--teal);stroke-width:1.8;margin-top:2px}.tip span{font-size:14.5px}
 .letters{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 6px}
-.letters span{display:flex;flex-direction:column;align-items:center;background:var(--surface2);border-radius:10px;min-width:34px;padding:4px 6px}.letters b{font-size:16px}.letters i{font-style:normal;font-size:12px;color:var(--gold);font-weight:700}
+.letters span{display:flex;flex-direction:column;align-items:center;background:var(--surface2);border-radius:10px;min-width:34px;padding:4px 6px}.letters b{font-size:16px}.letters i{font-style:normal;font-size:12px;color:var(--violet);font-weight:700}
 
 /* predictions */
 .trs{padding:0 12px 12px;display:grid;gap:10px}
@@ -162,7 +162,7 @@ button:focus-visible,input:focus-visible,summary:focus-visible,a:focus-visible{o
 .ev{display:flex;gap:12px;background:var(--surface2);border-radius:var(--r-s);padding:12px}
 .ev-d{width:50px;text-align:center;flex:none}.ev-d b{display:block;font:600 26px/1 var(--serif)}.ev-d span{display:block;font-size:13px;color:var(--ink2)}.ev-d small{font-size:11.5px;color:var(--ink2)}
 .ev-b{position:relative;padding-left:0;min-width:0}.ev-b>.gl{display:none}.ev-b b{display:block;font-size:15.5px}.ev-b p{margin:4px 0 0;font-size:14.5px;color:var(--ink2)}
-.ev.in{border-left:4px solid var(--gold)}.ev.rx{border-left:4px solid var(--violet)}.ev.dx{border-left:4px solid var(--teal)}
+.ev.in{border-left:4px solid var(--ink2)}.ev.rx{border-left:4px solid var(--violet)}.ev.dx{border-left:4px solid var(--teal)}
 .chaps{padding:0 12px 12px;display:grid;gap:10px}
 .chap{background:var(--surface2);border-radius:var(--r-s);padding:12px 14px}.chap.cur{background:var(--goldBg);outline:2px solid var(--gold)}.chap.past{opacity:.7}
 .chap-h{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.chap-h b{font:600 19px var(--serif)}.chap-h span{color:var(--ink2);font-size:14px;margin-left:auto}
@@ -181,7 +181,7 @@ button:focus-visible,input:focus-visible,summary:focus-visible,a:focus-visible{o
 .pl-h{display:flex;justify-content:space-between;align-items:center;gap:8px}.pl-h b{font:600 17px var(--serif)}.pl small{display:block;color:var(--ink2);margin-top:2px}.pl p{margin:6px 0 0}
 .mounts{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 12px 12px}.mount{background:var(--surface2);border-radius:var(--r-s);padding:10px 12px}.mount b{font-size:14.5px}.mount p{margin:3px 0 0;font-size:13.5px;color:var(--ink2)}
 .busy{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:36px 20px;text-align:center}
-.spin{width:44px;height:44px;border-radius:50%;border:4px solid var(--goldBg);border-top-color:var(--gold);margin:0 auto 14px;animation:sp 1s linear infinite}
+.spin{width:44px;height:44px;border-radius:50%;border:4px solid var(--goldBg);border-top-color:var(--violet);margin:0 auto 14px;animation:sp 1s linear infinite}
 @keyframes sp{to{transform:rotate(360deg)}}
 
 /* me */
@@ -189,7 +189,7 @@ button:focus-visible,input:focus-visible,summary:focus-visible,a:focus-visible{o
 .row-btn{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:12px}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 20px;border-radius:99px;font-weight:700;min-height:48px;font-size:15.5px}
 .btn svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
-.btn.primary{background:var(--gold);color:#2A1A00}.btn.ghost{background:var(--surface);border:1px solid var(--line)}.btn.danger{background:var(--surface);border:1px solid var(--rose);color:var(--rose)}
+.btn.primary{background:var(--gold);color:var(--on-gold)}.btn.ghost{background:var(--surface);border:1px solid var(--line)}.btn.danger{background:var(--surface);border:1px solid var(--rose);color:var(--rose)}
 .about summary{padding:14px 16px;cursor:pointer;font-weight:600}.about p{padding:0 16px;color:var(--ink2);font-size:14.5px}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chip{padding:9px 15px;border-radius:99px;background:var(--surface);border:1px solid var(--line);font-weight:600;font-size:14.5px;min-height:42px}
@@ -215,7 +215,7 @@ input:focus{border-color:var(--violet);outline:0;box-shadow:0 0 0 3px var(--viol
 .icon-btn{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--surface);border:1px solid var(--line)}.icon-btn svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .dots{display:flex;gap:6px}.dots i{width:26px;height:5px;border-radius:9px;background:var(--line)}.dots i.on{background:var(--gold)}
 .wiz-body{flex:1;padding:22px 0 12px}.wiz-body h1{font-size:32px;line-height:1.15}.lead{color:var(--ink2);margin:10px 0 8px;font-size:16.5px}
-.hero-orb{width:150px;height:150px;border-radius:50%;margin:56px auto 34px;background:radial-gradient(circle at 35% 30%,#FFE9B0,var(--gold) 55%,#C97A12);box-shadow:0 0 0 14px color-mix(in srgb,var(--gold) 16%,transparent),0 0 0 32px color-mix(in srgb,var(--gold) 8%,transparent)}
+.sun-art{width:230px;height:230px;display:block;margin:26px auto 18px;filter:drop-shadow(0 0 16px rgba(255,255,255,.6)) drop-shadow(0 0 54px rgba(170,180,255,.5))}
 .wiz-foot{position:sticky;bottom:0;padding-top:10px;background:linear-gradient(transparent,var(--bg) 30%)}.wiz-foot .btn{width:100%}
 .wiz-err{color:var(--rose);font-weight:600;text-align:center;min-height:22px;margin-top:8px}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -229,6 +229,20 @@ input:focus{border-color:var(--violet);outline:0;box-shadow:0 0 0 3px var(--viol
 #toast.show{opacity:1;transform:translate(-50%,0)}
 @media (prefers-reduced-motion:reduce){.ring-arc,#toast,.spin{transition:none;animation:none}}
 @media (min-width:600px){body{padding-top:8px}}
+
+/* welcome scene: a white sun on deep indigo */
+#wizard.dark{background:radial-gradient(circle at 50% 36%,#3D4296 0%,#232866 38%,#12143A 78%,#0B0D28 100%);color:#fff}
+#wizard.dark h1{color:#fff}
+#wizard.dark .lead,#wizard.dark .fine{color:rgba(255,255,255,.78)}
+#wizard.dark .pill{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.28);color:#fff}
+#wizard.dark .seg{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.22)}
+#wizard.dark .seg button{color:rgba(255,255,255,.8)}
+#wizard.dark .seg button.on{background:#fff;color:#1B1F45}
+#wizard.dark .btn.primary{background:#fff;color:#1B1F45}
+#wizard.dark .wiz-foot{background:none}
+#wizard.dark .wiz-body{text-align:center}
+#wizard.dark .wiz-body h1{font-size:34px}
+.brand-mark{display:block}
 
 </style>
 </head>
@@ -497,6 +511,14 @@ R(c,a.tt,m.Jupiter,2.825345909524226E-7);b[m.Saturn]=R(c,a.tt,m.Saturn,8.4597151
 2.959122082855911E-4),H.AddAcceleration(b.a,b.r,this.curr.gravitators[m.Mercury].r,4.912547451450812E-11),H.AddAcceleration(b.a,b.r,this.curr.gravitators[m.Venus].r,7.243452486162703E-10),H.AddAcceleration(b.a,b.r,this.curr.gravitators[m.Earth].r,8.997011346712498E-10),H.AddAcceleration(b.a,b.r,this.curr.gravitators[m.Mars].r,9.549535105779258E-11),H.AddAcceleration(b.a,b.r,this.curr.gravitators[m.Jupiter].r,2.825345909524226E-7),H.AddAcceleration(b.a,b.r,this.curr.gravitators[m.Saturn].r,8.459715185680659E-8),
 H.AddAcceleration(b.a,b.r,this.curr.gravitators[m.Uranus].r,1.292024916781969E-8),H.AddAcceleration(b.a,b.r,this.curr.gravitators[m.Neptune].r,1.524358900784276E-8)};H.AddAcceleration=function(a,b,c,d){var f=c.x-b.x,g=c.y-b.y;b=c.z-b.z;c=f*f+g*g+b*b;d/=c*Math.sqrt(c);a.x+=f*d;a.y+=g*d;a.z+=b*d};H.prototype.Duplicate=function(){var a={};for(b in this.curr.gravitators)a[b]=this.curr.gravitators[b].clone();var b=[];for(var c=$jscomp.makeIterator(this.curr.bodies),d=c.next();!d.done;d=c.next())b.push(d.value.clone());
 return new kd(this.curr.time,a,b)};$jscomp.global.Object.defineProperties(H.prototype,{OriginBody:{configurable:!0,enumerable:!0,get:function(){return this.originBody}},Time:{configurable:!0,enumerable:!0,get:function(){return this.curr.time}}});e.GravitySimulator=H;var kd=function(a,b,c){this.time=a;this.gravitators=b;this.bodies=c}},{}]},{},[1])(1)});
+
+</script>
+<script>
+/* Light — settings you edit once.
+   After you deploy the Cloudflare Worker, paste its address between the quotes, e.g.
+   proxyUrl: 'https://light-palm.your-name.workers.dev'
+   Leave it empty to make people use their own API key instead. */
+window.LIGHT_CONFIG = { proxyUrl: '' };
 
 </script>
 <script>
@@ -1194,9 +1216,18 @@ const ICON = {
   pin: '<svg viewBox="0 0 24 24"><path d="M12 21s7-6.200 7-11.500A7 7 0 005 9.500C5 14.800 12 21 12 21z"/><circle cx="12" cy="9.500" r="2.500"/></svg>',
 };
 
+
+/* ---------- the white sun ---------- */
+function sunSVG() {
+  let rays = '';
+  for (let i = 0; i < 24; i++) { const ang = i * 15 * Math.PI / 180, long = i % 2 === 0, r1 = 64, r2 = long ? 94 : 80; rays += `<line x1="${(100 + r1 * Math.cos(ang)).toFixed(1)}" y1="${(100 + r1 * Math.sin(ang)).toFixed(1)}" x2="${(100 + r2 * Math.cos(ang)).toFixed(1)}" y2="${(100 + r2 * Math.sin(ang)).toFixed(1)}"/>`; }
+  return `<svg class="sun-art" viewBox="0 0 200 200" aria-hidden="true"><defs><radialGradient id="sunG" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#fff"/><stop offset=".72" stop-color="#fff"/><stop offset="1" stop-color="#E8EBFF"/></radialGradient></defs><circle cx="100" cy="100" r="54" fill="url(#sunG)"/><g stroke="#fff" stroke-width="3.4" stroke-linecap="round" opacity=".95">${rays}</g></svg>`;
+}
+const BRAND = (() => { let r = ''; for (let i = 0; i < 8; i++) { const ang = i * 45 * Math.PI / 180; r += `<line x1="${(16 + 8.6 * Math.cos(ang)).toFixed(2)}" y1="${(16 + 8.6 * Math.sin(ang)).toFixed(2)}" x2="${(16 + 12 * Math.cos(ang)).toFixed(2)}" y2="${(16 + 12 * Math.sin(ang)).toFixed(2)}"/>`; } return `<svg class="brand-mark" viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><circle cx="16" cy="16" r="15.5" fill="#1B1F45" stroke="rgba(255,255,255,.28)"/><circle cx="16" cy="16" r="5.4" fill="#fff"/><g stroke="#fff" stroke-width="1.7" stroke-linecap="round">${r}</g></svg>`; })();
+
 /* ---------- state ---------- */
 const KEY = 'light.v1';
-const defaultState = () => ({ lang: (navigator.language || '').toLowerCase().startsWith('hi') ? 'hi' : 'en', system: 'vedic', activeId: null, profiles: [], settings: { apiKey: '', model: 'claude-sonnet-5-5', loc: null }, theme: 'auto' });
+const defaultState = () => ({ lang: (navigator.language || '').toLowerCase().startsWith('hi') ? 'hi' : 'en', system: 'vedic', activeId: null, profiles: [], settings: { apiKey: '', code: '', model: 'claude-sonnet-5-5', loc: null }, theme: 'auto' });
 let S = (() => { try { const j = JSON.parse(localStorage.getItem(KEY)); if (j && j.profiles) return Object.assign(defaultState(), j); } catch (e) {} return defaultState(); })();
 LANG = S.lang;
 const ui = { tab: 'today', charts: 'astro', ctype: 'd1', pred: 'now' };
@@ -1228,7 +1259,7 @@ function applyTheme() { document.documentElement.dataset.theme = S.theme === 'au
 function setLang(l) { LANG = l; S.lang = l; save(); applyTheme(); if (wiz.open) renderWizard(); else render(); }
 function topbar() {
   const p = me();
-  return `<header class="top"><div class="brand"><svg viewBox="0 0 32 32" width="26" height="26" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="var(--gold)"/><circle cx="21" cy="13" r="11" fill="var(--bg)"/></svg><span>Light</span></div>
+  return `<header class="top"><div class="brand">${BRAND}<span>Light</span></div>
   <div class="top-r"><button class="pill" data-act="lang" aria-label="Language">${LANG === 'hi' ? 'EN' : 'हिं'}</button>${p ? `<button class="avatar" data-act="tab" data-v="me" aria-label="Profile">${esc(initials(p.name))}</button>` : ''}</div></header>`;
 }
 const TABS = [['today', () => L('Today', 'आज'), ICON.today], ['charts', () => L('Charts', 'कुंडली'), ICON.charts], ['pred', () => L('Predictions', 'भविष्य'), ICON.pred], ['me', () => L('Me', 'मैं'), ICON.me]];
@@ -1264,6 +1295,7 @@ const ACTIONS = {
   },
   clearloc() { S.settings.loc = null; save(); render(); },
   savekey() { const k = $('#apikey').value.trim(), m = $('#model').value.trim(); S.settings.apiKey = k; S.settings.model = m || 'claude-sonnet-5-5'; save(); toast(k ? L('Key saved on this device.', 'कुंजी इस डिवाइस पर सहेजी गई।') : L('Key removed.', 'कुंजी हटा दी गई।')); render(); },
+  savecode() { const c = $('#acode').value.trim(); S.settings.code = c; save(); toast(c ? L('Access code saved.', 'एक्सेस कोड सहेजा गया।') : L('Access code removed.', 'एक्सेस कोड हटा दिया गया।')); render(); },
   backup() {
     const blob = new Blob([JSON.stringify(S)], { type: 'application/json' }), a = document.createElement('a');
     a.href = URL.createObjectURL(blob); a.download = 'light-backup-' + new Date().toISOString().slice(0, 10) + '.json'; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 2000);
@@ -1293,7 +1325,7 @@ function renderWizard() {
   if (step === 'welcome') {
     title = L('Know yourself, gently.', 'स्वयं को जानें, सहजता से।');
     sub = L('Light reads your birth chart, your palm and your numbers together, and turns them into calm daily guidance.', 'लाइट आपकी जन्म कुंडली, हथेली और अंकों को साथ पढ़कर रोज़ की शांत सलाह देती है।');
-    body = `<div class="hero-orb" aria-hidden="true"></div><div class="seg wide" role="group"><button class="${LANG === 'en' ? 'on' : ''}" data-w="lang" data-v="en">English</button><button class="${LANG === 'hi' ? 'on' : ''}" data-w="lang" data-v="hi">हिन्दी</button></div>
+    body = `${sunSVG()}<div class="seg wide" role="group"><button class="${LANG === 'en' ? 'on' : ''}" data-w="lang" data-v="en">English</button><button class="${LANG === 'hi' ? 'on' : ''}" data-w="lang" data-v="hi">हिन्दी</button></div>
     <p class="fine">${L('Everything stays on your phone. Takes about two minutes.', 'सब कुछ आपके फ़ोन में ही रहता है। लगभग दो मिनट लगते हैं।')}</p>`;
   } else if (step === 'you') {
     title = L('What should we call you?', 'हम आपको क्या कहकर बुलाएँ?');
@@ -1330,6 +1362,7 @@ function renderWizard() {
     <p class="fine">${L('Your information is stored only on this device. Nothing is uploaded unless you analyse a palm photo with your own API key.', 'आपकी जानकारी केवल इसी डिवाइस पर रहती है। जब तक आप अपनी API कुंजी से पाम फ़ोटो का विश्लेषण नहीं करते, कुछ भी अपलोड नहीं होता।')}</p>`;
   }
   const last = wiz.step === STEPS.length - 1;
+  $('#wizard').className = step === 'welcome' ? 'dark' : '';
   $('#wizard').innerHTML = `<div class="wiz-in">
     <div class="wiz-top">${wiz.step > (wiz.editId ? 1 : 0) ? `<button class="icon-btn" data-w="back" aria-label="${L('Back', 'पीछे')}">${ICON.back}</button>` : (wiz.editId || S.profiles.length ? `<button class="icon-btn" data-w="cancel" aria-label="${L('Close', 'बंद करें')}">${ICON.back}</button>` : '<span></span>')}
       ${step !== 'welcome' ? `<div class="dots" aria-hidden="true">${STEPS.slice(1).map((s, i) => `<i class="${i + 1 <= wiz.step ? 'on' : ''}"></i>`).join('')}</div>` : '<span></span>'}<button class="pill" data-w="lang" data-v="${LANG === 'hi' ? 'en' : 'hi'}">${LANG === 'hi' ? 'EN' : 'हिं'}</button></div>
@@ -1770,8 +1803,7 @@ VIEWS.me = function () {
   return `<section class="profile"><div class="avatar big">${esc(initials(p.name))}</div><h1>${esc(p.name)}</h1><p>${fmtDate(new Date(p.dob + 'T12:00:00'), { day: 'numeric', month: 'long', year: 'numeric' })}${p.tob ? ', ' + p.tob : ''}</p><p class="muted">${esc(p.place.name)}</p><p class="muted">${esc(fieldName(p))}${p.role ? ', ' + esc(p.role) : ''}</p>
   <div class="row-btn"><button class="btn ghost" data-act="edit">${L('Edit details', 'विवरण बदलें')}</button><button class="btn ghost" data-act="addperson">${ICON.plus}${L('Add a person', 'किसी को जोड़ें')}</button></div></section>
   ${profs}
-  <section class="group">${sectionTitle(L('Palm analysis key', 'पाम विश्लेषण की कुंजी'), L('Your own Anthropic API key. It stays on this phone and is sent only to Anthropic when you analyse a palm photo.', 'आपकी अपनी Anthropic API कुंजी। यह इसी फ़ोन में रहती है और पाम फ़ोटो का विश्लेषण करते समय ही Anthropic को भेजी जाती है।'))}
-    <div class="pad"><label class="field"><span>API key</span><input id="apikey" type="password" autocomplete="off" placeholder="sk-ant-…" value="${esc(S.settings.apiKey)}"></label><label class="field"><span>${L('Model', 'मॉडल')}</span><input id="model" value="${esc(S.settings.model)}"></label><button class="btn primary" data-act="savekey">${L('Save', 'सहेजें')}</button><p class="fine">${L('Get a key at console.anthropic.com. Each analysis costs a few cents.', 'console.anthropic.com पर कुंजी बनाएँ। हर विश्लेषण पर कुछ सेंट का खर्च आता है।')}</p></div></section>
+  ${palmAccessSection()}
   <section class="group">${sectionTitle(L('Where are you now?', 'आप अभी कहाँ हैं?'), L('Used for sunrise-based timings like the power and pause windows.', 'सूर्योदय आधारित समय जैसे शक्ति और विराम काल के लिए।'))}
     <div class="pad"><p>${esc(lc ? lc.name + ` (${lc.lat.toFixed(2)}°, ${lc.lon.toFixed(2)}°)` : p.place.name + ' ' + L('(birth place)', '(जन्मस्थान)'))}</p><div class="row-btn"><button class="btn ghost" data-act="usegps">${ICON.pin}${L('Use my location', 'मेरी लोकेशन उपयोग करें')}</button>${lc ? `<button class="btn ghost" data-act="clearloc">${L('Reset', 'रीसेट')}</button>` : ''}</div></div></section>
   <section class="group">${sectionTitle(L('Appearance', 'रूप'))}<div class="pad">${seg('theme', [['auto', L('Auto', 'ऑटो')], ['light', L('Light', 'हल्का')], ['dark', L('Dark', 'गहरा')]], S.theme, 'theme')}</div></section>
@@ -1779,6 +1811,15 @@ VIEWS.me = function () {
   <section class="group"><details class="about"><summary>${L('How Light calculates', 'लाइट गणना कैसे करती है')}</summary><p>${L('Planet positions come from the astronomy-engine library (VSOP87 and lunar theory), accurate to about an arc-minute. Vedic charts are sidereal with the Lahiri ayanamsa, whole-sign houses, mean Rahu and Ketu and the Vimshottari dasha. Western charts are tropical with Placidus houses. Daily guidance uses Chandrabala and Tarabala from your birth star. Numerology follows the Indian method with Chaldean name values. Palm readings are AI interpretations of your photo.', 'ग्रहों की स्थिति astronomy-engine लाइब्रेरी (VSOP87 और चंद्र सिद्धांत) से आती है, जो लगभग एक कला-मिनट तक सटीक है। वैदिक कुंडली निरयन है: लाहिड़ी अयनांश, राशि-भाव, माध्य राहु-केतु और विंशोत्तरी दशा। पाश्चात्य कुंडली सायन है, प्लासिडस भावों के साथ। दैनिक मार्गदर्शन आपके जन्म-नक्षत्र से चंद्रबल और ताराबल पर आधारित है। अंकशास्त्र भारतीय पद्धति और कैल्डियन नाम-मानों का पालन करता है। हस्तरेखा आपकी फ़ोटो की AI व्याख्या है।')}</p><p>${L('Light is for reflection and inspiration. It is not medical, legal or financial advice.', 'लाइट चिंतन और प्रेरणा के लिए है। यह चिकित्सा, कानूनी या वित्तीय सलाह नहीं है।')}</p></details></section>
   <input type="file" id="restoreFile" accept="application/json" hidden>`;
 };
+
+function palmAccessSection() {
+  const keyForm = `<label class="field"><span>API key</span><input id="apikey" type="password" autocomplete="off" placeholder="sk-ant-…" value="${esc(S.settings.apiKey)}"></label><label class="field"><span>${L('Model', 'मॉडल')}</span><input id="model" value="${esc(S.settings.model)}"></label><button class="btn primary" data-act="savekey">${L('Save', 'सहेजें')}</button><p class="fine">${L('Get a key at console.anthropic.com. Each analysis costs a few cents. The key stays on this phone and is sent only to Anthropic.', 'console.anthropic.com पर कुंजी बनाएँ। हर विश्लेषण पर कुछ सेंट का खर्च आता है। कुंजी इसी फ़ोन में रहती है और केवल Anthropic को भेजी जाती है।')}</p>`;
+  const proxied = !!(window.LIGHT_CONFIG && window.LIGHT_CONFIG.proxyUrl);
+  if (!proxied) return `<section class="group">${sectionTitle(L('Palm analysis key', 'पाम विश्लेषण की कुंजी'), L('Your own Anthropic API key. It stays on this phone and is sent only to Anthropic when you analyse a palm photo.', 'आपकी अपनी Anthropic API कुंजी। यह इसी फ़ोन में रहती है और पाम फ़ोटो का विश्लेषण करते समय ही Anthropic को भेजी जाती है।'))}<div class="pad">${keyForm}</div></section>`;
+  return `<section class="group">${sectionTitle(L('Palm reading access', 'हस्तरेखा एक्सेस'), L('Enter the access code you were given. Your palm photo is sent securely for analysis and is not stored.', 'आपको दिया गया एक्सेस कोड भरें। आपकी पाम फ़ोटो विश्लेषण के लिए सुरक्षित रूप से भेजी जाती है और सहेजी नहीं जाती।'))}
+    <div class="pad"><label class="field"><span>${L('Access code', 'एक्सेस कोड')}</span><input id="acode" autocomplete="off" autocapitalize="none" value="${esc(S.settings.code || '')}"></label><button class="btn primary" data-act="savecode">${L('Save', 'सहेजें')}</button>
+    <details class="manual"><summary>${L('Use my own API key instead', 'इसके बजाय अपनी API कुंजी उपयोग करें')}</summary>${keyForm}</details></div></section>`;
+}
 
 </script>
 <script>
@@ -1798,6 +1839,16 @@ Otherwise return exactly this shape:
 Include all five lines and as many mounts as you can see. Enum values must stay in English; only text values use ${langName}.`;
 }
 
+const proxyUrl = () => (window.LIGHT_CONFIG && window.LIGHT_CONFIG.proxyUrl) || '';
+const useProxy = () => !!(proxyUrl() && S.settings.code);
+const palmReady = () => useProxy() || !!S.settings.apiKey;
+async function callProxy(payload) {
+  const r = await fetch(proxyUrl(), { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(Object.assign({ code: S.settings.code }, payload)) });
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok) { const e = new Error(j.error || 'HTTP ' + r.status); e.kind = j.error; e.limit = j.limit; throw e; }
+  const m = (j.text || '').match(/\{[\s\S]*\}/); if (!m) throw new Error('parse');
+  return JSON.parse(m[0]);
+}
 function resizeImage(file, max, q) {
   return new Promise((res, rej) => {
     const url = URL.createObjectURL(file), img = new Image();
@@ -1824,7 +1875,12 @@ async function callClaude(content, maxTokens) {
 }
 function palmFail(e) {
   ui.palmBusy = false;
-  ui.palmErr = e.status === 401 ? L('Your API key was not accepted. Check it in the Me tab.', 'आपकी API कुंजी स्वीकार नहीं हुई। मैं टैब में जाँचें।')
+  ui.palmErr = e.kind === 'bad_code' ? L('That access code was not accepted. Check it in the Me tab.', 'यह एक्सेस कोड स्वीकार नहीं हुआ। मैं टैब में जाँचें।')
+    : e.kind === 'limit' ? L(`You have reached today’s limit of ${e.limit || 'a few'} palm readings. Please try again tomorrow.`, `आज की ${e.limit || 'कुछ'} हस्तरेखा विश्लेषणों की सीमा पूरी हो गई। कृपया कल फिर कोशिश करें।`)
+    : e.kind === 'limit_global' ? L('Palm readings are paused for today because the shared daily limit was reached. Please try again tomorrow.', 'आज की साझा सीमा पूरी होने से हस्तरेखा विश्लेषण रुका है। कृपया कल फिर कोशिश करें।')
+    : e.kind === 'upstream' || e.kind === 'not_configured' ? L('The palm reading service is not available right now. Please try again later.', 'हस्तरेखा सेवा अभी उपलब्ध नहीं है। कृपया बाद में कोशिश करें।')
+    : e.kind === 'bad_image' ? L('That photo could not be used. Please retake it.', 'यह फ़ोटो उपयोग नहीं हो सकी। कृपया फिर से लें।')
+    : e.status === 401 ? L('Your API key was not accepted. Check it in the Me tab.', 'आपकी API कुंजी स्वीकार नहीं हुई। मैं टैब में जाँचें।')
     : e.status === 429 ? L('Too many requests right now. Wait a minute and try again.', 'अभी बहुत अनुरोध हैं। एक मिनट रुककर फिर कोशिश करें।')
     : e.status === 404 ? L('That model name was not found. Check the Model field in the Me tab.', 'यह मॉडल नहीं मिला। मैं टैब में मॉडल का नाम जाँचें।')
     : e.message === 'parse' ? L('The reading came back in an unexpected format. Please try again.', 'विश्लेषण अप्रत्याशित रूप में आया। कृपया फिर कोशिश करें।')
@@ -1833,7 +1889,7 @@ function palmFail(e) {
 }
 function palmPick(kind) {
   const p = me();
-  if (!S.settings.apiKey) { ui.palmErr = L('Add your API key first, then come back to analyse your palm.', 'पहले अपनी API कुंजी जोड़ें, फिर पाम का विश्लेषण करें।'); ui.tab = 'me'; render(); return toast(ui.palmErr); }
+  if (!palmReady()) { ui.palmErr = proxyUrl() ? L('Enter your access code in the Me tab first, then come back to analyse your palm.', 'पहले मैं टैब में अपना एक्सेस कोड भरें, फिर पाम का विश्लेषण करें।') : L('Add your API key first, then come back to analyse your palm.', 'पहले अपनी API कुंजी जोड़ें, फिर पाम का विश्लेषण करें।'); ui.tab = 'me'; render(); return toast(ui.palmErr); }
   const i = document.createElement('input'); i.type = 'file'; i.accept = 'image/*'; if (kind === 'camera') i.setAttribute('capture', 'environment');
   i.onchange = () => { if (i.files && i.files[0]) palmRun(i.files[0]); };
   i.click();
@@ -1843,18 +1899,21 @@ async function palmRun(file) {
   ui.palmBusy = true; ui.palmErr = ''; render();
   try {
     const big = await resizeImage(file, 1280, 0.85), thumb = await resizeImage(file, 280, 0.7);
-    const data = await callClaude([{ type: 'image', source: { type: 'base64', media_type: 'image/jpeg', data: big.split(',')[1] } }, { type: 'text', text: palmPrompt(p, hand, LANG === 'hi' ? 'Hindi (Devanagari script)' : 'English') }], 2200);
+    const age = Math.max(1, Math.floor((Date.now() - new Date(p.dob).getTime()) / (365.25 * 86400000)));
+    const data = useProxy()
+      ? await callProxy({ mode: 'palm', image: big.split(',')[1], hand, dominant: hand === p.hand, age, field: fieldInfo(p.field)[1][0], role: p.role || '', lang: LANG })
+      : await callClaude([{ type: 'image', source: { type: 'base64', media_type: 'image/jpeg', data: big.split(',')[1] } }, { type: 'text', text: palmPrompt(p, hand, LANG === 'hi' ? 'Hindi (Devanagari script)' : 'English') }], 2200);
     ui.palmBusy = false;
     if (!data.ok) { ui.palmErr = data.reason || L('We could not see a clear palm. Please retake the photo.', 'हथेली साफ़ नहीं दिखी। कृपया फ़ोटो फिर लें।'); return render(); }
     p.palm = p.palm || {}; p.palm[hand] = { data, thumb, at: Date.now(), lang: LANG }; save(); render(); toast(L('Palm reading ready.', 'हस्तरेखा विश्लेषण तैयार है।'));
   } catch (e) { palmFail(e); }
 }
 ACTIONS.palmtr = async function () {
-  const p = me(), hand = ui.palmHand || p.hand || 'right', r = p.palm && p.palm[hand]; if (!r || !S.settings.apiKey) return;
+  const p = me(), hand = ui.palmHand || p.hand || 'right', r = p.palm && p.palm[hand]; if (!r || !palmReady()) return;
   ui.palmBusy = true; render();
   try {
     const target = LANG === 'hi' ? 'Hindi (Devanagari script)' : 'English';
-    const data = await callClaude([{ type: 'text', text: `Translate every human-readable string value of this JSON into ${target}. Keep all keys and the enum values (element, strength, prominence, confidence, photoQuality, key, and booleans) exactly unchanged. Return the JSON only.\n${JSON.stringify(r.data)}` }], 2200);
+    const data = useProxy() ? await callProxy({ mode: 'translate', json: r.data, lang: LANG }) : await callClaude([{ type: 'text', text: `Translate every human-readable string value of this JSON into ${target}. Keep all keys and the enum values (element, strength, prominence, confidence, photoQuality, key, and booleans) exactly unchanged. Return the JSON only.\n${JSON.stringify(r.data)}` }], 2200);
     r.data = data; r.lang = LANG; save(); ui.palmBusy = false; render();
   } catch (e) { palmFail(e); }
 };
@@ -1869,7 +1928,7 @@ function palmView(p) {
     return hs + err + `<section class="palm-intro"><div class="palm-art" aria-hidden="true">${ICON.hand}</div><h2>${L('Add your palm', 'अपनी हथेली जोड़ें')}</h2>
     <p>${L('One clear photo is enough. Light looks at your life, head, heart, fate and sun lines, the mounts and the shape of your hand.', 'एक साफ़ फ़ोटो काफ़ी है। लाइट आपकी जीवन, मस्तिष्क, हृदय, भाग्य और सूर्य रेखाओं, पर्वतों और हाथ के आकार को देखती है।')}</p>
     <ul class="tips"><li>${L('Use daylight, no flash glare.', 'दिन की रोशनी लें, फ़्लैश की चमक नहीं।')}</li><li>${L('Open the palm flat, fingers slightly apart.', 'हथेली सपाट खोलें, उँगलियाँ थोड़ी अलग।')}</li><li>${L('Include the wrist crease and all fingertips.', 'कलाई की रेखा और सभी उँगलियों के सिरे फ़्रेम में रखें।')}</li><li>${L('Hold the camera straight above, about 25 cm away.', 'कैमरा सीधे ऊपर, लगभग 25 सेमी दूर रखें।')}</li></ul>
-    ${pick()}${S.settings.apiKey ? '' : `<p class="fine">${L('You need your own API key for this step. Add it in the Me tab.', 'इस चरण के लिए आपकी अपनी API कुंजी चाहिए। इसे मैं टैब में जोड़ें।')}</p>`}</section>`;
+    ${pick()}${palmReady() ? '' : `<p class="fine">${proxyUrl() ? L('Enter the access code you were given in the Me tab to unlock palm reading.', 'हस्तरेखा खोलने के लिए आपको दिया गया एक्सेस कोड मैं टैब में भरें।') : L('You need your own API key for this step. Add it in the Me tab.', 'इस चरण के लिए आपकी अपनी API कुंजी चाहिए। इसे मैं टैब में जोड़ें।')}</p>`}</section>`;
   }
   const R = res.data, ql = { faint: L('Light', 'हल्की'), clear: L('Clear', 'स्पष्ट'), deep: L('Deep', 'गहरी') };
   const lines = (R.lines || []).map((l) => `<article class="pl"><div class="pl-h"><b>${P(C.palmLines[l.key] || [l.key, l.key])}</b><em class="tag ${l.visible === false ? '' : 'ok'}">${l.visible === false ? L('Not clear in photo', 'फ़ोटो में स्पष्ट नहीं') : ql[l.strength] || ''}</em></div>${l.observation ? `<small>${esc(l.observation)}</small>` : ''}<p>${esc(l.meaning || '')}</p></article>`).join('');
